@@ -2,3 +2,4 @@
 *.5*
 fort.*
 Source.*
+**/*.so

@@ -4,15 +4,17 @@ import time
 from numpy import f2py
 
 #Standard functions
-from Fortran_Objects import Fortran_Functions, Spectral_Poisson, Multigrid_Solver
+from Fortran_Objects import Fortran_Functions, Spectral_Poisson
+#, Multigrid_Solver
 
 #Standard turbulence closures
-from Fortran_Objects import Standard_Models, Relaxation_Filtering
+from Fortran_Objects import Standard_Models
+from Fortran_Objects import Relaxation_Filtering
 
 #F2PY objects
-from Fortran_Objects import Ml_Convolution, ML_Regression, ML_AD_Classification
-from Fortran_Objects import ML_Nearest_Neighbors, ML_Feature_Functions, ML_Logistic_Functions
-from Fortran_Objects import ML_TBDNN
+#from Fortran_Objects import Ml_Convolution, ML_Regression, ML_AD_Classification
+#from Fortran_Objects import ML_Nearest_Neighbors, ML_Feature_Functions, ML_Logistic_Functions
+#from Fortran_Objects import ML_TBDNN
 
 # Temporal trackers
 from Fortran_Objects import Temporal_Tracker
@@ -55,10 +57,10 @@ def init_domain():
     5 - Smagorinsky
     10 - Dynamic Smagorinsky (Comput. Fluids 2017 formulation)
     '''
-    closure_choice = 16
+    closure_choice = 10
     class_use = False
 
-    lt = 4.0 # Final time
+    lt = 1.0 # Final time
 
     dt = 1.0e-3
     nt = int(lt/dt)
@@ -846,7 +848,8 @@ def main_func():
 
     t = 0.0
 
-    clock_time_init = time.time.clock()
+    #clock_time_init = time.clock()
+    clock_time_start = time.time()
     # Defining numpy array for storing temporal info
     sigma_history = np.asarray([sigma], dtype='double')
     tke_counter = np.zeros(shape=(nt,3),dtype='double')
@@ -873,7 +876,7 @@ def main_func():
         tke_counter[tstep, 2] = var_tracker(omega)
 
 
-    total_clock_time = time.time.clock()-clock_time_init
+    total_clock_time = time.time() - clock_time_start
 
     print('Total Clock Time = ',total_clock_time)
     post_process(omega,psi)

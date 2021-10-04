@@ -14,11 +14,11 @@ f2py3 -c --fcompiler=gfortran -m Fortran_Functions Fortran_Functions.f95
 f2py3 -c --fcompiler=gfortran -m Spectral_Poisson Spectral_Poisson.f95
 # #Relaxation filtering
 f2py3 -c --fcompiler=gfortran -m Relaxation_Filtering Relaxation_Filtering.f95
-
+f2py3 -c --fcompiler=gfortran -m Temporal_Tracker Temporal_Tracker.f95
+f2py3 -c --fcompiler=gfortran -m Standard_Models Standard_Models.f95
 
 #f2py3 -c --fcompiler=gfortran -m Multigrid_Solver Multigrid_Solver.f95
 ## #Standard closures
-#f2py3 -c --fcompiler=gfortran -m Standard_Models Standard_Models.f95
 ## #ML Closures
 #f2py3 -c --fcompiler=gfortran -m Ml_Convolution Ml_Convolution.f95
 #f2py3 -c --fcompiler=gfortran -m ML_Regression ML_Regression.f95
@@ -27,7 +27,6 @@ f2py3 -c --fcompiler=gfortran -m Relaxation_Filtering Relaxation_Filtering.f95
 #f2py3 -c --fcompiler=gfortran -m ML_Logistic_Functions ML_Logistic_Functions.f95
 #f2py3 -c --fcompiler=gfortran -m ML_AD_Classification ML_AD_Classification.f95
 #f2py3 -c --fcompiler=gfortran -m ML_TBDNN ML_TBDNN.f95
-#f2py3 -c --fcompiler=gfortran -m Temporal_Tracker Temporal_Tracker.f95
 
 #Change this according to your distribution of python
 #for x in *.cpython-36m-x86_64-linux-gnu.so; do mv "$x" "${x%.cpython-36m-x86_64-linux-gnu.so}.so"; done

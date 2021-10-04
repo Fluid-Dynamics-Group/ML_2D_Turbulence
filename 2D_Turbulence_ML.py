@@ -84,7 +84,7 @@ def post_process(omega,psi):
     plot1 = ax.contourf(omega[:, :])#,levels=levels)
     plt.colorbar(plot1, format="%.2f")
 
-    plt.show()
+    plt.savefig("/home/bo/sync/solution.png")
 
     arr_len = int(0.5*np.sqrt(float(nx*nx + ny*ny)))-1
     eplot = np.zeros(arr_len+1,dtype='double')
@@ -101,7 +101,8 @@ def post_process(omega,psi):
     plt.xlabel('k')
     plt.ylabel('E(k)')
     plt.title('Angle averaged energy spectra')
-    plt.show()
+
+    plt.savefig("/home/bo/sync/spectra.png")
 
     np.save('Field.npy',omega)
     np.save('Spectra.npy',[kplot, eplot])

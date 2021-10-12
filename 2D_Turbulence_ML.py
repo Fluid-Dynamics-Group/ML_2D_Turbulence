@@ -84,7 +84,7 @@ def post_process(omega,psi):
     plot1 = ax.contourf(omega[:, :])#,levels=levels)
     plt.colorbar(plot1, format="%.2f")
 
-    plt.savefig("/home/bo/sync/solution.png")
+    plt.savefig("/output/solution.png")
 
     arr_len = int(0.5*np.sqrt(float(nx*nx + ny*ny)))-1
     eplot = np.zeros(arr_len+1,dtype='double')
@@ -102,7 +102,7 @@ def post_process(omega,psi):
     plt.ylabel('E(k)')
     plt.title('Angle averaged energy spectra')
 
-    plt.savefig("/home/bo/sync/spectra.png")
+    plt.savefig("/output/spectra.png")
 
     np.save('Field.npy',omega)
     np.save('Spectra.npy',[kplot, eplot])
@@ -841,6 +841,7 @@ def classification_tracker(return_matrix):
 #-------------------------------------------------------------------------------------#
 
 def main_func():
+    print("running")
 
     #Initialize my domain and constants
     omega, psi = init_domain()
